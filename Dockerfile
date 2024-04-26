@@ -6,6 +6,7 @@ RUN apt-get update && apt-get -y install cron iputils-ping
 ENV JOB_DESCRIPTION="My Job Description"
 ENV JOB = "my_job"
 ENV INSTANCE = "my_instance"
+ENV URL="http://host.docker.internal:9091"
 
 WORKDIR /app
 

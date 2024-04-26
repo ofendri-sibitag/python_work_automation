@@ -4,6 +4,7 @@ import os
 JOB_DESCRIPTION = os.environ["JOB_DESCRIPTION"]
 JOB = os.environ["JOB"]
 INSTANCE = os.environ["INSTANCE"]
+URL=os.environ["URL"]
 
 metric_name = "my_metric_count"
 
@@ -15,7 +16,7 @@ def send_event():
     fetchworktimeup = f"# HELP {metric_name} {JOB_DESCRIPTION}\
 \n# TYPE {metric_name} counter\
 \n{metric_name} {counter}"
-    URI = f"http://host.docker.internal:9091/metrics/job/{JOB}/instance/{INSTANCE}"
+    URI = f"{URL}/metrics/job/{JOB}/instance/{INSTANCE}"
     metrics = fetchworktimeup + "\n"
 
     print("Sending counter request...")

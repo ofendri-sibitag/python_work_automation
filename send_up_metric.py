@@ -4,12 +4,13 @@ import os
 JOB_DESCRIPTION = os.environ["JOB_DESCRIPTION"]
 JOB = os.environ["JOB"]
 INSTANCE = os.environ["INSTANCE"]
+URL=os.environ["URL"]
 
 def send_up():
     fetchworktimeup = f"# HELP up {JOB_DESCRIPTION}\
 \n# TYPE up gauge\
 \nup {1}"
-    URI = f"http://host.docker.internal:9091/metrics/job/{JOB}/instance/{INSTANCE}"
+    URI = f"{URL}/metrics/job/{JOB}/instance/{INSTANCE}"
     metrics = fetchworktimeup + "\n"
 
     print("Sending up request...")
